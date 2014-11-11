@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BNRHypnosisViewController.h"
 #import "BNRReminderViewController.h"
+#import "QuizViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,18 +22,24 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
     BNRHypnosisViewController *hvc = [[BNRHypnosisViewController alloc] init];
     
     // get a pointer to an app bundle
     NSBundle *appBundle = [NSBundle mainBundle];
-    
     // look in appBundle for xib file
     BNRReminderViewController *rvc = [[BNRReminderViewController alloc] initWithNibName:@"BNRReminderViewController" bundle:appBundle];
     
+    QuizViewController *qvc = [[QuizViewController alloc] init];
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[hvc, rvc];
+    tabBarController.viewControllers = @[hvc, rvc, qvc];
     self.window.rootViewController = tabBarController;
+    
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

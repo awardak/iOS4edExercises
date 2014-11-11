@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRReminderViewController">
             <connections>
                 <outlet property="datePicker" destination="I7P-xC-6ta" id="nxZ-zs-REl"/>
+                <outlet property="segmentedControl" destination="WhT-FD-sVT" id="eAR-zx-UxD"/>
                 <outlet property="view" destination="mmL-yi-MJX" id="apB-aR-jFP"/>
             </connections>
         </placeholder>
@@ -36,6 +37,20 @@
                         <action selector="addReminder:" destination="-1" eventType="touchUpInside" id="OxR-aZ-czY"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WhT-FD-sVT">
+                    <rect key="frame" x="161" y="467" width="166" height="29"/>
+                    <segments>
+                        <segment title="Red"/>
+                        <segment title="Green"/>
+                        <segment title="Blue"/>
+                    </segments>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="117" y="471" width="166" height="29"/>
+                    </variation>
+                    <connections>
+                        <action selector="segmentedControlAction:" destination="-1" eventType="valueChanged" id="lFb-lB-SGP"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="248" y="311"/>

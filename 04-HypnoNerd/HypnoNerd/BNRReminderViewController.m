@@ -11,6 +11,7 @@
 @interface BNRReminderViewController ()
 
 @property (nonatomic, weak) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -54,6 +55,16 @@
 {
     [super viewWillAppear:animated];
     self.datePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:60];
+}
+
+- (IBAction)segmentedControlAction:(id)sender
+{
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+        self.view.backgroundColor = [UIColor redColor];
+    else if (self.segmentedControl.selectedSegmentIndex == 1)
+        self.view.backgroundColor = [UIColor greenColor];
+    else if (self.segmentedControl.selectedSegmentIndex == 2)
+        self.view.backgroundColor = [UIColor blueColor];
 }
 
 @end

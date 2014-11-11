@@ -9,6 +9,11 @@
 #import "BNRHypnosisViewController.h"
 #import "BNRHypnosisterView.h"
 
+@interface BNRHypnosisViewController ()
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+
+@end
+
 @implementation BNRHypnosisViewController
 
 - (void)loadView
@@ -19,6 +24,12 @@
     
     // set it as *the* view of the view controller
     self.view = backgroundView;
+
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Red", @"Green", @"Blue", nil]];
+    self.segmentedControl.frame = CGRectMake(30, 30, 200, 40);
+    [self.segmentedControl addTarget:self action:@selector(segmentedControlAction) forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:self.segmentedControl];
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,6 +43,7 @@
         
         self.tabBarItem.image = image;
     }
+    
     return self;
 }
 
@@ -40,6 +52,16 @@
     [super viewDidLoad];
     
     NSLog(@"BNRHypnosis VC loaded its view.");
+}
+- (void) segmentedControlAction
+{
+    NSLog(@"%ld pressed", (long)self.segmentedControl.selectedSegmentIndex);
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+        self.view.backgroundColor = [UIColor redColor];
+    else if (self.segmentedControl.selectedSegmentIndex == 1)
+        self.view.backgroundColor = [UIColor greenColor];
+    else if (self.segmentedControl.selectedSegmentIndex == 2)
+        self.view.backgroundColor = [UIColor blueColor];
 }
 
 @end
