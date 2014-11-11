@@ -1,0 +1,8 @@
+new project
+  - create view controller class
+  - build interface with labels and buttons
+  - make connections between controller and view objects
+terms
+	- outlet - pointer to object
+	- action - a method triggered by a view object
+	- app delegate - the starting point of every app
